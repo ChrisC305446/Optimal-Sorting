@@ -12,7 +12,7 @@ try:
   for line in sys.stdin:
     if line.rstrip() == "!end":
       break # for ending stdin on vscode
-    words.append(line.rstrip())
+    words.append(line.rstrip().lower())
     print(words)
     #make words array from stdin
 except:
