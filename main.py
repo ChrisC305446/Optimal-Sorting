@@ -10,6 +10,8 @@ import sys
 words = []
 try:
   for line in sys.stdin:
+    if line.rstrip() == "!end":
+      break # for ending stdin on vscode
     words.append(line.rstrip())
     print(words)
     #make words array from stdin
@@ -20,5 +22,7 @@ except:
 
 
 output = sort(words)
-print(f"sorted array = {output}")
+
+for word in output:
+  sys.stdout.write(f"{word}\n")
 ###########output
