@@ -29,6 +29,8 @@ alpha_to_num = {
   "y":24,
   "z":25
 }
+def isSorted(unfiltered):
+  pass
 
 def sort(unfiltered):
   #sort as .lower()
@@ -37,9 +39,14 @@ def sort(unfiltered):
   #while isSorted() == False:
   
   for index, word in enumerate(unfiltered):
-    if unfiltered.__len__ != index+1: #if not at end of array  
+    if unfiltered.__len__ != index+1: #if not at end of array
+      
       if alpha_to_num[word[str_index]] > alpha_to_num[unfiltered[index+1][str_index]]: #if number version of character at string index greater than number version of character at string index one element ahead
-        pass #switch 
+        temp =unfiltered[index]
+        unfiltered[index] =unfiltered[index+1]
+        unfiltered[index+1] = temp
+      
+        
   str_index += 1 #what character in string is being tested
   filtered = unfiltered
   
