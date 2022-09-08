@@ -29,12 +29,17 @@ alpha_to_num = {
 
 def sort(unfiltered):
   #sort as .lower()
+  for word in unfiltered:
+    if word[word] 
   
   filtered = unfiltered
   
   return filtered
 
 #########sort function
+
+
+
 
 
 import sys
@@ -55,6 +60,9 @@ except:
   #error catch
 
 ###########turn stdin into array of strings
+
+
+
 
 
 
