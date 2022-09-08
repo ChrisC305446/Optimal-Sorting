@@ -46,10 +46,11 @@ def sort(unfiltered):
       
       #make strings same length with spaces
       if filtered[index].__len__() > filtered[index+1].__len__(): #pad word ahead
-        filtered[index+1].rjust(filtered[index].__len__())
+        filtered[index+1] = filtered[index+1].ljust(filtered[index].__len__())
       if filtered[index].__len__() < filtered[index+1].__len__(): #pad current word
-        filtered[index].rjust(filtered[index+1].__len__())
+        filtered[index] = filtered[index].ljust(filtered[index+1].__len__())
       
+      word = filtered[index] #update reference
       
       #swap values
       if alpha_to_num[word[str_index]] > alpha_to_num[filtered[index+1][str_index]]: #if number version of character at string index greater than number version of character at string index one element ahead
