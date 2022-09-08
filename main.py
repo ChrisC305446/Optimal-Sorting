@@ -38,7 +38,7 @@ def sort(unfiltered):
   
   for index, word in enumerate(unfiltered):
     if unfiltered.__len__ != index+1: #if not at end of array  
-      if alpha_to_num[word[str_index]] > alpha_to_num[unfiltered[index+1][str_index]]:
+      if alpha_to_num[word[str_index]] > alpha_to_num[unfiltered[index+1][str_index]]: #if number version of character at string index greater than number version of character at string index one element ahead
         pass #switch 
   str_index += 1 #what character in string is being tested
   filtered = unfiltered
