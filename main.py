@@ -2,6 +2,7 @@ import enum
 
 
 alpha_to_num = {
+  " ":-1,
   "a":0,
   "b":1,
   "c":2,
@@ -35,20 +36,27 @@ def isSorted(unfiltered):
 def sort(unfiltered):
   #sort as .lower()
   
+  filtered = unfiltered
+
   str_index = 0
   #while isSorted() == False:
   
-  for index, word in enumerate(unfiltered):
-    if unfiltered.__len__ != index+1: #if not at end of array
+  for index, word in enumerate(filtered):
+    if filtered.__len__() != index+1: #if not at end of array
       
-      if alpha_to_num[word[str_index]] > alpha_to_num[unfiltered[index+1][str_index]]: #if number version of character at string index greater than number version of character at string index one element ahead
-        temp =unfiltered[index]
-        unfiltered[index] =unfiltered[index+1]
-        unfiltered[index+1] = temp
+      #make strings same length with spaces
+      if filtered[index].__len__() > filtered[index+1].__len__(): #pad word ahead
+        filtered[index+1].rjust(filtered[index].__len__())
+      if filtered[index].__len__() < filtered[index+1].__len__(): #pad current word
+        filtered[index].rjust(filtered[index+1].__len__())
+      if alpha_to_num[word[str_index]] > alpha_to_num[filtered[index+1][str_index]]: #if number version of character at string index greater than number version of character at string index one element ahead
+        temp =filtered[index]
+        filtered[index] = filtered[index+1]
+        filtered[index+1] = temp
       
         
   str_index += 1 #what character in string is being tested
-  filtered = unfiltered
+  
   
   return filtered
 
