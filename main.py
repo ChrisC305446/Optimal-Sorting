@@ -1,3 +1,6 @@
+import enum
+
+
 alpha_to_num = {
   "a":0,
   "b":1,
@@ -29,9 +32,15 @@ alpha_to_num = {
 
 def sort(unfiltered):
   #sort as .lower()
-  for word in unfiltered:
-    if word[word] 
   
+  str_index = 0
+  #while isSorted() == False:
+  
+  for index, word in enumerate(unfiltered):
+    if unfiltered.__len__ != index+1: #if not at end of array  
+      if alpha_to_num[word[str_index]] > alpha_to_num[unfiltered[index+1][str_index]]:
+        pass #switch 
+  str_index += 1 #what character in string is being tested
   filtered = unfiltered
   
   return filtered
