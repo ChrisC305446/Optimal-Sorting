@@ -1,4 +1,6 @@
 def sort(unfiltered):
+  #sort as .lower()
+  
   filtered = unfiltered
   
   return filtered
@@ -15,7 +17,7 @@ try:
     if line.rstrip() == "!end":
       break # for ending stdin on vscode
     
-    words.append(line.rstrip().lower())
+    words.append(line.rstrip())
    
    
     
