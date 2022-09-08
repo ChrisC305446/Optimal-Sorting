@@ -49,6 +49,9 @@ def sort(unfiltered):
         filtered[index+1].rjust(filtered[index].__len__())
       if filtered[index].__len__() < filtered[index+1].__len__(): #pad current word
         filtered[index].rjust(filtered[index+1].__len__())
+      
+      
+      #swap values
       if alpha_to_num[word[str_index]] > alpha_to_num[filtered[index+1][str_index]]: #if number version of character at string index greater than number version of character at string index one element ahead
         temp =filtered[index]
         filtered[index] = filtered[index+1]
