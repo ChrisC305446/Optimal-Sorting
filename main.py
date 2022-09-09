@@ -68,7 +68,6 @@ def sort(unfiltered):
   str_index = 0
   for char in range(0,largest_string): #what character is being tested
     while is_sorted(filtered,str_index) == False: # while current character index isnt sorted
-      print(str(str_index) + " not sorted")
       if str_index == 0: # first character
         for index, word in enumerate(unfiltered):
           if unfiltered.__len__() != index+1: #if not at end of array
