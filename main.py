@@ -1,5 +1,3 @@
-import enum
-
 
 alpha_to_num = {
   " ":-1,
@@ -30,36 +28,50 @@ alpha_to_num = {
   "y":24,
   "z":25
 }
-def isSorted(unfiltered):
-  pass
+def is_sorted(unfiltered,str_index): # takes in array and tests if 
+  if index == 0: # first character
+    for index, word in unfiltered:
+       if unfiltered.__len__() != index+1: #if not at end of array
+        if alpha_to_num[word.lower()[str_index]] > alpha_to_num[unfiltered[index+1].lower()[str_index]]:
+          return False # not ordered
+  else: # allow characters to be unordered if character before on both characters is different (only return false if unordered and character before is same on both)
+    for index, word in unfiltered:
+       if unfiltered.__len__() != index+1: #if not at end of array
+        if alpha_to_num[word.lower()[str_index]] > alpha_to_num[unfiltered[index+1].lower()[str_index]]:
+          #if all prior characters in word the same!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+          return False # not ordered
 
 def sort(unfiltered):
   #sort as .lower()
   
   filtered = unfiltered
 
-  str_index = 0
-  #while isSorted() == False:
-  
+  largest_string = 0
+  for word in filtered:
+    if word.__len__() > largest_string:
+      largest_string = word.__len__()
+  #find length of largest word
   for index, word in enumerate(filtered):
-    if filtered.__len__() != index+1: #if not at end of array
-      
-      #make strings same length with spaces
-      if filtered[index].__len__() > filtered[index+1].__len__(): #pad word ahead
-        filtered[index+1] = filtered[index+1].ljust(filtered[index].__len__())
-      if filtered[index].__len__() < filtered[index+1].__len__(): #pad current word
-        filtered[index] = filtered[index].ljust(filtered[index+1].__len__())
-      
-      word = filtered[index] #update reference
-      
-      #swap values
-      if alpha_to_num[word[str_index]] > alpha_to_num[filtered[index+1][str_index]]: #if number version of character at string index greater than number version of character at string index one element ahead
-        temp =filtered[index]
-        filtered[index] = filtered[index+1]
-        filtered[index+1] = temp
-      
+    filtered[index] = word.ljust(largest_string+2)
+  #pad so all words are the same size
+
+  str_index = 0
+  for char in range(0,largest_string): #what character is being tested
+    while is_sorted(filtered,str_index) == False: # while current character index isnt sorted
+      for index, word in enumerate(filtered):# pass through array and swap values
+        if filtered.__len__() != index+1: #if not at end of array
         
-  str_index += 1 #what character in string is being tested
+    
+          word = filtered[index] #update reference
+          
+          #swap values
+          if alpha_to_num[word.lower()[str_index]] > alpha_to_num[filtered[index+1].lower()[str_index]]: #if number version of character at string index greater than number version of character at string index one element ahead
+            temp =filtered[index]
+            filtered[index] = filtered[index+1]
+            filtered[index+1] = temp
+          
+          
+    str_index += 1 #what character in string is being tested
   
   
   return filtered
@@ -97,5 +109,5 @@ except:
 output = sort(words)
 
 for word in output:
-  sys.stdout.write(f"{word}\n")#output as stdout 
+  sys.stdout.write(f"{word}")#output as stdout 
 ###########output
