@@ -119,6 +119,8 @@ except:
 if words.__len__() > 1:
   output = sort(words)
 
-for word in output:
-  sys.stdout.write(f"{word}\n")#output as stdout 
+  for word in output:
+    sys.stdout.write(f"{word}\n")#output as stdout 
+else:
+  sys.stdout.write(f"{words[0]}\n")
 ###########output
