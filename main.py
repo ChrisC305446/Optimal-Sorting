@@ -65,23 +65,28 @@ def sort(unfiltered):
   str_index = 0
   for char in range(0,largest_string): #what character is being tested
     while is_sorted(filtered,str_index) == False: # while current character index isnt sorted
-      for index, word in enumerate(filtered):# pass through array and swap values
-        if filtered.__len__() != index+1: #if not at end of array
-        
-    
-          word = filtered[index] #update reference
-          
-          #swap values
-          if alpha_to_num[word.lower()[str_index]] > alpha_to_num[filtered[index+1].lower()[str_index]]: #if number version of character at string index greater than number version of character at string index one element ahead
-            temp =filtered[index]
-            filtered[index] = filtered[index+1]
-            filtered[index+1] = temp
-          
+      if str_index == 0: # first character
+        for index, word in enumerate(unfiltered):
+          if unfiltered.__len__() != index+1: #if not at end of array
+            if alpha_to_num[word.lower()[str_index]] > alpha_to_num[unfiltered[index+1].lower()[str_index]]:
+              temp =filtered[index]
+              filtered[index] = filtered[index+1]
+              filtered[index+1] = temp
+      else: # allow characters to be unordered if character before on both characters is different (only return false if unordered and character before is same on both)
+        for index, word in enumerate(unfiltered):
+          if unfiltered.__len__() != index+1: #if not at end of array
+            if alpha_to_num[word.lower()[str_index]] > alpha_to_num[unfiltered[index+1].lower()[str_index]]:
+              #if all prior characters in word the same!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+              for num in range(str_index+1,-1,-1):
+                if alpha_to_num[word.lower()[num]] == alpha_to_num[unfiltered[index+1].lower()[num]]: #if prior characters same
+                  temp =filtered[index]
+                  filtered[index] = filtered[index+1]
+                  filtered[index+1] = temp          
           
     str_index += 1 #what character in string is being tested
   
   
-  return filtered
+  return filtered.rstrip()
 
 #########sort function
 
@@ -111,10 +116,9 @@ except:
 
 
 
-
-
-output = sort(words)
+if words.__len__() > 1:
+  output = sort(words)
 
 for word in output:
-  sys.stdout.write(f"{word}")#output as stdout 
+  sys.stdout.write(f"{word}\n")#output as stdout 
 ###########output
