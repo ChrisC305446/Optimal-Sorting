@@ -1,4 +1,5 @@
 
+
 alpha_to_num = {
   " ":-1,
   "a":0,
@@ -29,17 +30,23 @@ alpha_to_num = {
   "z":25
 }
 def is_sorted(unfiltered,str_index): # takes in array and tests if 
-  if index == 0: # first character
-    for index, word in unfiltered:
+  if str_index == 0: # first character
+    for index, word in enumerate(unfiltered):
        if unfiltered.__len__() != index+1: #if not at end of array
         if alpha_to_num[word.lower()[str_index]] > alpha_to_num[unfiltered[index+1].lower()[str_index]]:
           return False # not ordered
+    return True
   else: # allow characters to be unordered if character before on both characters is different (only return false if unordered and character before is same on both)
-    for index, word in unfiltered:
+    for index, word in enumerate(unfiltered):
        if unfiltered.__len__() != index+1: #if not at end of array
         if alpha_to_num[word.lower()[str_index]] > alpha_to_num[unfiltered[index+1].lower()[str_index]]:
           #if all prior characters in word the same!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-          return False # not ordered
+          for num in range(str_index+1,-1,-1):
+            if alpha_to_num[word.lower()[num]] == alpha_to_num[unfiltered[index+1].lower()[num]]: #if prior characters same
+              return False
+            else:# if all characters matched
+              return True
+          
 
 def sort(unfiltered):
   #sort as .lower()
