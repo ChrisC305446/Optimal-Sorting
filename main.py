@@ -29,6 +29,7 @@ alpha_to_num = {
   "y":24,
   "z":25
 }
+
 def is_sorted(unfiltered,str_index): # takes in array and tests if 
   if str_index == 0: # first character
     for index, word in enumerate(unfiltered):
