@@ -54,13 +54,14 @@ def sort(unfiltered):
             if alpha_to_num[word.lower()[str_index]] > alpha_to_num[unfiltered[index+1].lower()[str_index]]:
                #if all prior characters in word the same!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
               if str_index != 0:
-                if alpha_to_num[word.lower()[str_index-1]] == alpha_to_num[unfiltered[index+1].lower()[str_index-1]]: #if prior characters same
-                  temp =filtered[index]#swap
-                  filtered[index] = filtered[index+1]
-                  filtered[index+1] = temp          
-                  changed = True
+                 for num in range(str_index-1,-1,-1): # iterate up string
+                  if alpha_to_num[word.lower()[str_index-1]] == alpha_to_num[unfiltered[index+1].lower()[str_index-1]]: #if prior characters same
+                    temp =filtered[index]#swap
+                    filtered[index] = filtered[index+1]
+                    filtered[index+1] = temp          
+                    changed = True
+                    break
                   break
-                  
               else:
                 temp =filtered[index]#swap
                 filtered[index] = filtered[index+1]
