@@ -17,7 +17,7 @@ while anyChanges == True:
        forCount = 0
        for word in range(len(words)-1):
               word2 = word+1
-              if words[word] > words[word2]:
+              if words[word].lower() > words[word2].lower():
                      words[word], words[word2] = words[word2], words[word]
                      anyChanges = True
 
