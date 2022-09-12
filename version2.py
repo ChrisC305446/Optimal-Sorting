@@ -22,5 +22,6 @@ while anyChanges == True:
                      anyChanges = True
 
 
-print(words)
+for word in words:
+  sys.stdout.write(f"{word}\n")
        
