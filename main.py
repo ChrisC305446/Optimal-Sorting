@@ -1,5 +1,6 @@
 
 
+
 alpha_to_num = {
   " ":-1,
   "a":0,
@@ -30,28 +31,6 @@ alpha_to_num = {
   "z":25
 }
 
-def is_sorted(unfiltered,str_index): # takes in array and tests if 
-  if str_index == 0: # first character
-    for index, word in enumerate(unfiltered):
-       if unfiltered.__len__() != index+1: #if not at end of array
-        if alpha_to_num[word.lower()[str_index]] > alpha_to_num[unfiltered[index+1].lower()[str_index]]:
-          return False # not ordered
-    return True
-  else: # allow characters to be unordered if character before on both characters is different (only return false if unordered and character before is same on both)
-    for index, word in enumerate(unfiltered):
-       if unfiltered.__len__() != index+1: #if not at end of array
-        if alpha_to_num[word.lower()[str_index]] > alpha_to_num[unfiltered[index+1].lower()[str_index]]:
-          #if all prior characters in word the same!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-          for num in range(str_index-1 ,-1,-1):
-            if alpha_to_num[word.lower()[num]] == alpha_to_num[unfiltered[index+1].lower()[num]]: #if prior characters same
-              if alpha_to_num[word.lower()[str_index]] != alpha_to_num[unfiltered[index+1].lower()[str_index]]: #if its not just a dupelicate
-                return False
-            # if all characters matched
-            else:
-              break
-          return True
-          
-
 def sort(unfiltered):
   #sort as .lower()
   
@@ -68,29 +47,31 @@ def sort(unfiltered):
 
   str_index = 0
   for char in range(0,largest_string): #what character is being tested
-    while is_sorted(filtered,str_index) == False: # while current character index isnt sorted
-      if str_index == 0: # first character
+    while True: # while current character index isnt sorted
+        print("testing " + str(str_index))
+        changed = False
         for index, word in enumerate(unfiltered):
           if unfiltered.__len__() != index+1: #if not at end of array
             if alpha_to_num[word.lower()[str_index]] > alpha_to_num[unfiltered[index+1].lower()[str_index]]:
-              temp =filtered[index]
-              filtered[index] = filtered[index+1]
-              filtered[index+1] = temp
-      else: # allow characters to be unordered if character before on both characters is different (only return false if unordered and character before is same on both)
-        for index, word in enumerate(unfiltered):
-          if unfiltered.__len__() != index+1: #if not at end of array
-            if alpha_to_num[word.lower()[str_index]] > alpha_to_num[unfiltered[index+1].lower()[str_index]]:
-              #if all prior characters in word the same!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-              for num in range(str_index-1,-1,-1):
-                if alpha_to_num[word.lower()[num]] == alpha_to_num[unfiltered[index+1].lower()[num]]: #if prior characters same
-                  temp =filtered[index]
-                  filtered[index] = filtered[index+1]
-                  filtered[index+1] = temp          
+               #if all prior characters in word the same!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+              if str_index != 0:
+                for num in range(str_index-1,-1,-1):
+                  if alpha_to_num[word.lower()[num]] == alpha_to_num[unfiltered[index+1].lower()[num]]: #if prior characters same
+                    temp =filtered[index]#swap
+                    filtered[index] = filtered[index+1]
+                    filtered[index+1] = temp          
+                    changed = True
+                    break
                   break
-                break
-          
-    str_index += 1 #what character in string is being tested
-  
+              else:
+                temp =filtered[index]#swap
+                filtered[index] = filtered[index+1]
+                filtered[index+1] = temp
+                changed = True
+        if changed == False: #sorted
+          str_index += 1
+          break # move on to next character
+           
   for index, word in enumerate(filtered):
     filtered[index] = word.rstrip()
   #remove spaces
