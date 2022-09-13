@@ -1,6 +1,3 @@
-
-
-
 alpha_to_num = {
   " ":-1,
   "a":0,
@@ -28,7 +25,8 @@ alpha_to_num = {
   "w":22,
   "x":23,
   "y":24,
-  "z":25
+  "z":25,
+  "é":26
 }
 
 def sort(unfiltered):
