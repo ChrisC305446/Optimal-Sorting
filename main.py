@@ -46,16 +46,16 @@ def sort(unfiltered):
   #pad so all words are the same size
 
   str_index = 0
-  for char in range(0,largest_string): #what character is being tested
+  for _ in range(0,largest_string): #what character is being tested
     while True: # while current character index isnt sorted
         changed = False
-        for index, word in enumerate(unfiltered):
-          if unfiltered.__len__() != index+1: #if not at end of array
-            if alpha_to_num[word.lower()[str_index]] > alpha_to_num[unfiltered[index+1].lower()[str_index]]:
-               #if all prior characters in word the same!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        for index, word in enumerate(filtered):
+          if filtered.__len__() != index+1: #if not at end of array
+            if alpha_to_num[word.lower()[str_index]] > alpha_to_num[filtered[index+1].lower()[str_index]]:
+               #if all prior characters in word the same
               if str_index != 0:
                 for num in range(str_index-1,-1,-1): # iterate up string
-                  if alpha_to_num[word.lower()[num]] == alpha_to_num[unfiltered[index+1].lower()[num]]: #if prior characters same
+                  if alpha_to_num[word.lower()[num]] == alpha_to_num[filtered[index+1].lower()[num]]: #if prior characters same
                     continue#no problems
                   break
                 else: # if all characters same
