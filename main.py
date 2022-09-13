@@ -92,6 +92,7 @@ def sort(unfiltered):
            
   for index, word in enumerate(filtered):
     filtered[index] = word.rstrip()
+    filtered[index] = word.lstrip()
   #remove spaces
   return filtered
 
