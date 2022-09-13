@@ -43,14 +43,14 @@ def sort(unfiltered):
     filtered[index] = " " + word.ljust(largest_string+2)
   #pad so all words are the same size
 
-  str_index = 0
-  for _ in range(0,largest_string): #what character is being tested
+  
+  for str_index in range(0,largest_string): #what character is being tested
     while True: # while current character index isnt sorted
         changed = False
         for index, word in enumerate(filtered):
-          index_mod = 0#for ignoring apostrophes
-          next_index_mod = 0
-          negative_index_mod = 0
+          index_mod = 1#for ignoring apostrophes
+          next_index_mod = 1
+          negative_index_mod = 0# to account for apostrophe based index errors
           negative_next_index_mod = 0
           if filtered.__len__() != index+1: #if not at end of array
             
@@ -62,10 +62,10 @@ def sort(unfiltered):
             
             
             if alpha_to_num[word.lower()[str_index+index_mod]] > alpha_to_num[filtered[index+1].lower()[str_index+next_index_mod]]:
-               #if all prior characters in word the same
+               
               if str_index != 0:   
              
-                for num in range(str_index-1,-1,-1): # iterate up string
+                for num in range(str_index-1+index_mod,-1,-1): # iterate up string
                   if word.lower()[str_index] == "'":
                     negative_index_mod += 1
                   if filtered[index+1].lower()[str_index] == "'":
@@ -88,7 +88,6 @@ def sort(unfiltered):
                 filtered[index+1] = temp
                 changed = True
         if changed == False: #sorted
-          str_index += 1
           break # move on to next character
            
   for index, word in enumerate(filtered):
