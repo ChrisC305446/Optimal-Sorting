@@ -51,13 +51,33 @@ def sort(unfiltered):
         changed = False
         for index, word in enumerate(filtered):
           if filtered.__len__() != index+1: #if not at end of array
-            if alpha_to_num[word.lower()[str_index]] > alpha_to_num[filtered[index+1].lower()[str_index]]:
+            index_mod = 0#for ignoring apostrophes
+            next_index_mod = 0
+            if word.lower()[str_index] == "'":
+              index_mod = 1
+            if filtered[index+1].lower()[str_index] == "'":
+              next_index_mod = 1
+            
+            
+            
+            if alpha_to_num[word.lower()[str_index+index_mod]] > alpha_to_num[filtered[index+1].lower()[str_index+next_index_mod]]:
                #if all prior characters in word the same
               if str_index != 0:
+                negative_index_mod = 0
+                negative_next_index_mod = 0
+                
+            
                 for num in range(str_index-1,-1,-1): # iterate up string
-                  if alpha_to_num[word.lower()[num]] == alpha_to_num[filtered[index+1].lower()[num]]: #if prior characters same
-                    continue#no problems
-                  break
+                  if word.lower()[str_index] == "'":
+                    negative_index_mod += 1
+                  if filtered[index+1].lower()[str_index] == "'":
+                    negative_next_index_mod += 1
+                  try:
+                    if alpha_to_num[word.lower()[num-negative_index_mod]] == alpha_to_num[filtered[index+1].lower()[num-negative_next_index_mod]]: #if prior characters same
+                      continue#no problems
+                    break
+                  except:
+                    print(word,filtered[index+1])
                 else: # if all characters same
                   temp =filtered[index]#swap
                   filtered[index] = filtered[index+1]
