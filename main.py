@@ -77,7 +77,7 @@ def sort(unfiltered):
                       continue#no problems
                     break
                   except:
-                    print(word,filtered[index+1])
+                   # print(word,filtered[index+1])
                 else: # if all characters same
                   temp =filtered[index]#swap
                   filtered[index] = filtered[index+1]
