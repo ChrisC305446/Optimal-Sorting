@@ -48,11 +48,12 @@ def sort(unfiltered):
     while True: # while current character index isnt sorted
         changed = False
         for index, word in enumerate(filtered):
+          index_mod = 0#for ignoring apostrophes
+          next_index_mod = 0
+          negative_index_mod = 0
+          negative_next_index_mod = 0
           if filtered.__len__() != index+1: #if not at end of array
-            index_mod = 0#for ignoring apostrophes
-            next_index_mod = 0
-            negative_index_mod = 0
-            negative_next_index_mod = 0
+            
 
             if word.lower()[str_index] == "'":
               index_mod += 1
