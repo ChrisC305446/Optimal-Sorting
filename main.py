@@ -40,7 +40,7 @@ def sort(unfiltered):
       largest_string = word.__len__()
   #find length of largest word
   for index, word in enumerate(filtered):
-    filtered[index] = word.ljust(largest_string+2)
+    filtered[index] = " " + word.ljust(largest_string+2)
   #pad so all words are the same size
 
   str_index = 0
@@ -51,20 +51,19 @@ def sort(unfiltered):
           if filtered.__len__() != index+1: #if not at end of array
             index_mod = 0#for ignoring apostrophes
             next_index_mod = 0
+            negative_index_mod = 0
+            negative_next_index_mod = 0
+
             if word.lower()[str_index] == "'":
-              index_mod = 1
+              index_mod += 1
             if filtered[index+1].lower()[str_index] == "'":
-              next_index_mod = 1
-            
+              next_index_mod += 1
             
             
             if alpha_to_num[word.lower()[str_index+index_mod]] > alpha_to_num[filtered[index+1].lower()[str_index+next_index_mod]]:
                #if all prior characters in word the same
-              if str_index != 0:
-                negative_index_mod = 0
-                negative_next_index_mod = 0
-                
-            
+              if str_index != 0:   
+             
                 for num in range(str_index-1,-1,-1): # iterate up string
                   if word.lower()[str_index] == "'":
                     negative_index_mod += 1
