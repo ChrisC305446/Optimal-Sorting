@@ -133,6 +133,8 @@ except:
 output = sort(words)
 
 for word in output:
-  sys.stdout.write(f"{word}\n")#output as stdout 
+  final = ""
+  final += word + "/n"
+  sys.stdout.write(final)#output as stdout 
 
 ###########output
