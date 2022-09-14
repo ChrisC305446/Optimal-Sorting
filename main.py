@@ -26,7 +26,7 @@ alpha_to_num = {
   "x":23,
   "y":24,
   "z":25,
-  "é":26
+  "é":4
 }
 
 def sort(unfiltered):
@@ -55,16 +55,15 @@ def sort(unfiltered):
           if filtered.__len__() != index+1: #if not at end of array
             
 
-            if word.lower()[str_index] == "'":
+            if word.lower()[str_index+index_mod] == "'":
               index_mod += 1
-            if filtered[index+1].lower()[str_index] == "'":
+            if filtered[index+1].lower()[str_index+next_index_mod] == "'":
               next_index_mod += 1
-            
-            
+           
+              #print(f"alpha_to_num[{word}.lower()[{str_index}+{index_mod}]] == {alpha_to_num[word.lower()[str_index+index_mod]]}, alpha_to_num[{filtered[index+1]}.lower()[{str_index}+{next_index_mod}]] == alpha_to_num[filtered[index+1].lower()[str_index+next_index_mod]]")  
             if alpha_to_num[word.lower()[str_index+index_mod]] > alpha_to_num[filtered[index+1].lower()[str_index+next_index_mod]]:
-               
               if str_index != 0:   
-             
+            
                 for num in range(str_index-1+index_mod,-1,-1): # iterate up string
                   if word.lower()[str_index] == "'":
                     negative_index_mod += 1
