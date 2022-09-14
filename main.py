@@ -91,8 +91,8 @@ def sort(unfiltered):
           break # move on to next character
            
   for index, word in enumerate(filtered):
-    filtered[index] = word.rstrip()
-    filtered[index] = word.lstrip()
+    filtered[index] = filtered[index].rstrip()
+    filtered[index] = filtered[index].lstrip()
   #remove spaces
   return filtered
 
