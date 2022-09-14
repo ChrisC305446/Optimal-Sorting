@@ -26,8 +26,7 @@ alpha_to_num = {
   "x":23,
   "y":24,
   "z":25,
-  "é":26,
-  "?":27
+  "é":26
 }
 
 def sort(unfiltered):
