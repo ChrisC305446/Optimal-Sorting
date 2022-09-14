@@ -9,5 +9,4 @@ for line in sys.stdin:
        words.append(line)
        
 words.sort()
-print(words)
-       
+str.lstrip
