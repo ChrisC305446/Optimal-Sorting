@@ -3,9 +3,6 @@ import sys
 words = []
 
 for line in sys.stdin:
-       if 'q' == line.rstrip():
-              break
-       
        words.append(line)
 
 words = [i.strip() for i in words]
@@ -14,7 +11,6 @@ words = [i.strip() for i in words]
 anyChanges = True
 while anyChanges == True:
        anyChanges = False
-       forCount = 0
        for word in range(len(words)-1):
               word2 = word+1
               if words[word].lower() > words[word2].lower():
@@ -23,5 +19,6 @@ while anyChanges == True:
 
 
 for word in words:
+       
   sys.stdout.write(f"{word}\n")
        
