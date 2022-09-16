@@ -19,6 +19,6 @@ while anyChanges == True:
 
 
 for word in words:
-       
-  sys.stdout.write(f"{word}\n")
-       
+  out = []     
+  out.append(f"{word}/n")
+  sys.stdout.write(out)
