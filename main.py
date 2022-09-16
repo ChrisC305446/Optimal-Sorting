@@ -1,24 +1,15 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> 79e584a91b172a69eb8882ee7feebefb97ebbaef
 import sys
 
 words = []
 
 for line in sys.stdin:
-<<<<<<< HEAD
        if 'q' == line.rstrip():
               break
-       
-=======
->>>>>>> 79e584a91b172a69eb8882ee7feebefb97ebbaef
        words.append(line)
 
 words = [i.strip() for i in words]
        
 #sort begins here
-<<<<<<< HEAD
 #anyChanges = True
 #while anyChanges == True:
 #       anyChanges = False
@@ -51,19 +42,3 @@ words = quicksort(words[0], words[len(words)-1], words)
               
 for word in words:
   sys.stdout.write(f"{word}\n")
-       
-=======
-anyChanges = True
-while anyChanges == True:
-       anyChanges = False
-       for word in range(len(words)-1): #!!!!!!!!!!!!!!!!!!!!!!change sort method
-              word2 = word+1
-              if words[word].lower() > words[word2].lower():
-                     words[word], words[word2] = words[word2], words[word]
-                     anyChanges = True
-
-
-for word in words:
-       
-  sys.stdout.write(f"{word}\n")
->>>>>>> 79e584a91b172a69eb8882ee7feebefb97ebbaef
