@@ -136,7 +136,7 @@ output = sort(words)
 
 for word in output:
   final = ""
-  final += word + "/n"
+  final += word + "\n"
   sys.stdout.write(final)#output as stdout 
 
 ###########output
