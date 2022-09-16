@@ -21,7 +21,7 @@ words = [i.strip() for i in words]
 #                     anyChanges = True
 
 def split(left, right, words):
-       last, first = words[right], left
+       last, first = right, left
        for i in range(left, right):
               if words[i] <= first:
                      words[i], words[first] = words[first], words[i]
